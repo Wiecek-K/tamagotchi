@@ -25,6 +25,6 @@
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
     "useDefineForClassFields": true,
-    "noImplicitAny": false
+    "noImplicitAny": true
   }
 }

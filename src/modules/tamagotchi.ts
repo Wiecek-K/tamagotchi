@@ -12,9 +12,15 @@ export default class Tamagotchi {
     console.log("Tamagotchi initialized");
   }
 
-  displayHealth = (elementSelector) => {
-    const displayElement = document.querySelector(elementSelector);
-    displayElement.innerText = this.energy.value;
+  displayHealth = (elementSelector: string) => {
+    const displayElement = document.querySelector(
+      elementSelector,
+    ) as HTMLParagraphElement;
+
+    if (!displayElement) {
+      throw new Error("element not found");
+    }
+    displayElement.innerText = this.energy.value + "";
   };
 
   mount = ({ healthElement, hungerElement, energyElement, funElement }) => {
