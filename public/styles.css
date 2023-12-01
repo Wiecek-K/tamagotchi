@@ -1,3 +1,14 @@
+:root {
+  --dark: #1c1c1c;
+  --yellow: #f8d26d;
+  --timber: #dfa46d;
+  --plum: #724d50;
+  --lightest-blue: #e7f6fd;
+  --light-blue: #cdedfc;
+  --blue: #9fdcf9;
+  --white: #ffffff;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -8,6 +19,7 @@ body {
   background: #1c1c1c;
   overflow: hidden;
   height: 100vh;
+  font-family: "VT323", monospace;
 }
 
 .bar {
@@ -25,4 +37,13 @@ body {
   border-radius: 10px;
   margin: 0 auto;
   height: 657px;
+  display: flex;
+  flex-direction: column;
+  padding: 40px 7px;
+}
+
+.gameDisplay {
+}
+
+.actionButtons {
 }

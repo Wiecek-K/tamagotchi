@@ -1,13 +1,22 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <title>Tamagotchi</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=VT323&display=swap"
+      rel="stylesheet"
+    />
     <link href="./styles.css" rel="stylesheet" />
   </head>
   <body>
     <div class="gameBoy">
-      <p class="bar">Energy <span class="health" /></p>
+      <div class="gameDisplay">
+        <p class="bar">Energy <span class="health" /></p>
+      </div>
+      <div class="actionButtons"></div>
     </div>
 
     <script src="dist/app.js" type="module"></script>
