@@ -1,8 +1,9 @@
 export default class Tamagotchi {
-  health;
-  hunger;
-  energy;
-  fun;
+  health: { value: number; importance: number };
+  hunger: { value: number; importance: number };
+  energy: { value: number; importance: number };
+  fun: { value: number; importance: number };
+
   constructor() {
     this.health = { value: 10, importance: 1 };
     this.hunger = { value: 10, importance: 3 };
