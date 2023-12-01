@@ -1,3 +1,4 @@
+import { ITamagotchiStatus } from "../types/tamagotchi";
 export default class Tamagotchi {
   health: { value: number; importance: number };
   hunger: { value: number; importance: number };
@@ -23,7 +24,12 @@ export default class Tamagotchi {
     displayElement.innerText = this.energy.value + "";
   };
 
-  mount = ({ healthElement, hungerElement, energyElement, funElement }) => {
+  mount = ({
+    healthElement,
+    hungerElement,
+    energyElement,
+    funElement,
+  }: ITamagotchiStatus) => {
     this.displayHealth(healthElement);
   };
 }
