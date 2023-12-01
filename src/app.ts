@@ -5,9 +5,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Start game
   game.start({
-    healthElement: ".health",
-    energyElement: "",
-    funElement: "",
-    hungerElement: "",
+    healthElement: "#healthPoint",
+    energyElement: "#energyPoint",
+    funElement: "#funPoint",
+    hungerElement: "#hungerPoint",
   });
 });
