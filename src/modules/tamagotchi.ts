@@ -183,6 +183,7 @@ export default class Tamagotchi extends Abilities {
 
   displayState = (elementSelector: string) => {
     if (this.nextState != this.lastState) {
+//clear animation interval
       switch (this.nextState) {
         case "bored":
           this.#displayStateBored(elementSelector);

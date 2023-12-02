@@ -39,7 +39,6 @@ export default class Game {
       this.tamagotchi.counter++;
     }
     this.tamagotchi.checkState();
-    console.log(this.tamagotchi.isInAction);
 
     this.tamagotchi.mount({
       healthElement,
@@ -48,13 +47,9 @@ export default class Game {
       funElement,
       stateElement,
     });
-    console.log("Game updated");
   };
 
   setState = (nextState: TTamagoState) => {
-    console.log("lastState", this.tamagotchi.lastState);
-    console.log("next State", this.tamagotchi.nextState);
-
     if (this.tamagotchi.lastState != nextState) {
       this.tamagotchi.isInAction = true;
       this.tamagotchi.nextState = nextState;
