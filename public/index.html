@@ -13,7 +13,7 @@
   </head>
   <body>
     <div class="gameBoy">
-      <div class="gameDisplay">
+      <div class="gameDisplay" id="gameDisplay">
         <div class="statusBar">
           <div class="stat">
             <img
@@ -52,12 +52,10 @@
             <p class="statPoint" id="funPoint"></p>
           </div>
         </div>
-        <div class="tamagoPlace">
-          <img
-            src="./assets/tamago/State=Standing.svg"
-            alt="your tamago"
-            id="tamago"
-          />
+        <div class="tamagoPlace" id="tamagoPlace">
+          <div id="tamago">
+            <img src="./assets/tamago/State=Standing.svg" alt="your tamago" />
+          </div>
           <div class="tamagoFloor"></div>
         </div>
         <div class="stateBar" id="stateBar">Sleepy</div>

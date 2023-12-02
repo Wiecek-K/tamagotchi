@@ -73,6 +73,9 @@ body {
   flex-direction: column;
   align-items: center;
 }
+.tamagoPlace img {
+  display: block;
+}
 
 .tamagoFloor {
   width: 162px;
