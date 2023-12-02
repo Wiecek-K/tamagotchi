@@ -55,8 +55,12 @@ body {
 .stat {
   display: flex;
   align-items: center;
-  font-size: 60px;
+  font-size: 40px;
   line-height: 1em;
+}
+
+.stat.notMax {
+  font-size: 60px;
 }
 
 .tamagoPlace {
