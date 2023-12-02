@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
       funElement: "#funPoint",
       hungerElement: "#hungerPoint",
     });
-  }, 3000);
+  }, 1000);
 
   //add event listener click action btns
   //change state in game
