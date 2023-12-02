@@ -10,4 +10,17 @@ document.addEventListener("DOMContentLoaded", () => {
     funElement: "#funPoint",
     hungerElement: "#hungerPoint",
   });
+
+  setInterval(() => {
+    game.update({
+      healthElement: "#healthPoint",
+      energyElement: "#energyPoint",
+      funElement: "#funPoint",
+      hungerElement: "#hungerPoint",
+    });
+  }, 3000);
+
+  //add event listener click action btns
+  //change state in game
+  //game will use abilities
 });
