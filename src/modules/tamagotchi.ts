@@ -103,9 +103,8 @@ export default class Tamagotchi extends Abilities {
       if (this.fun.value <= 0) {
         this.energy.value--;
       }
-    } else {
-      this.flag = !this.flag;
     }
+    this.flag = !this.flag;
 
     this.hunger.value--;
     this.fun.value--;
