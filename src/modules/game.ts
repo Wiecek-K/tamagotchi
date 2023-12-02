@@ -1,8 +1,9 @@
 import Tamagotchi from "./tamagotchi";
-import { ITamagotchiStatus } from "./tamagotchi";
+import { ITamagotchiStatus, TTamagoState } from "./tamagotchi";
 
 export default class Game {
   tamagotchi: Tamagotchi;
+  counter = 0;
 
   constructor() {
     this.tamagotchi = new Tamagotchi();
@@ -32,7 +33,15 @@ export default class Game {
     funElement,
     stateElement,
   }: ITamagotchiStatus) => {
-    this.tamagotchi.decraseLifeParams();
+    if (!(this.counter % 5)) {
+      this.tamagotchi.decraseLifeParams();
+      this.tamagotchi.incraseLifeParams();
+
+      if (this.counter >= 10000) {
+        this.counter = 0;
+      }
+      this.tamagotchi.counter++;
+    }
     this.tamagotchi.checkState();
 
     this.tamagotchi.mount({
@@ -42,8 +51,14 @@ export default class Game {
       funElement,
       stateElement,
     });
-    console.log("Game updated");
   };
 
-  // setTamagoState=()=>{}
+  setState = (nextState: TTamagoState) => {
+    if (this.tamagotchi.lastState != nextState) {
+      this.tamagotchi.isInAction = true;
+      this.tamagotchi.nextState = nextState;
+    } else {
+      this.tamagotchi.isInAction = false;
+    }
+  };
 }
