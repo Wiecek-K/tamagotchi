@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
     energyElement: "#energyPoint",
     funElement: "#funPoint",
     hungerElement: "#hungerPoint",
+    stateElement: "#gameDisplay",
   });
 
   setInterval(() => {
@@ -17,8 +18,9 @@ document.addEventListener("DOMContentLoaded", () => {
       energyElement: "#energyPoint",
       funElement: "#funPoint",
       hungerElement: "#hungerPoint",
+      stateElement: "#gameDisplay",
     });
-    game.tamagotchi.counter++
+    game.tamagotchi.counter++;
   }, 1000);
 
   //add event listener click action btns

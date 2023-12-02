@@ -13,12 +13,14 @@ export default class Game {
     hungerElement,
     energyElement,
     funElement,
+    stateElement,
   }: ITamagotchiStatus) => {
     this.tamagotchi.mount({
       healthElement,
       hungerElement,
       energyElement,
       funElement,
+      stateElement,
     });
     console.log("Game started");
   };
@@ -28,15 +30,20 @@ export default class Game {
     hungerElement,
     energyElement,
     funElement,
+    stateElement,
   }: ITamagotchiStatus) => {
     this.tamagotchi.decraseLifeParams();
+    this.tamagotchi.checkState();
 
     this.tamagotchi.mount({
       healthElement,
       hungerElement,
       energyElement,
       funElement,
+      stateElement,
     });
     console.log("Game updated");
   };
+
+  // setTamagoState=()=>{}
 }
