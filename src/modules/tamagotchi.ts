@@ -28,7 +28,7 @@ export default class Tamagotchi extends Abilities {
     console.log("Tamagotchi initialized");
   }
 
-  displayHealth = (elementSelector: string) => {
+  #displayHealth = (elementSelector: string) => {
     const displayElement = document.querySelector(
       elementSelector,
     ) as HTMLParagraphElement;
@@ -43,7 +43,7 @@ export default class Tamagotchi extends Abilities {
       : displayElement.classList.add("notMax");
   };
 
-  displayHunger = (elementSelector: string) => {
+  #displayHunger = (elementSelector: string) => {
     const displayElement = document.querySelector(
       elementSelector,
     ) as HTMLParagraphElement;
@@ -58,7 +58,7 @@ export default class Tamagotchi extends Abilities {
       : displayElement.classList.add("notMax");
   };
 
-  displayEnergy = (elementSelector: string) => {
+  #displayEnergy = (elementSelector: string) => {
     const displayElement = document.querySelector(
       elementSelector,
     ) as HTMLParagraphElement;
@@ -73,7 +73,7 @@ export default class Tamagotchi extends Abilities {
       : displayElement.classList.add("notMax");
   };
 
-  displayFun = (elementSelector: string) => {
+  #displayFun = (elementSelector: string) => {
     const displayElement = document.querySelector(
       elementSelector,
     ) as HTMLParagraphElement;
@@ -88,7 +88,7 @@ export default class Tamagotchi extends Abilities {
       : displayElement.classList.add("notMax");
   };
 
-  displayStateHappy = (elementSelector: string) => {
+  #displayStateHappy = (elementSelector: string) => {
     const displayElement = document.querySelector(
       elementSelector,
     ) as HTMLDivElement;
@@ -105,7 +105,7 @@ export default class Tamagotchi extends Abilities {
     stateBar.innerText = "Happy";
   };
 
-  displayStateBored = (elementSelector: string) => {
+  #displayStateBored = (elementSelector: string) => {
     const displayElement = document.querySelector(
       elementSelector,
     ) as HTMLDivElement;
@@ -122,7 +122,7 @@ export default class Tamagotchi extends Abilities {
     stateBar.innerText = "Bored";
   };
 
-  displayStateHungry = (elementSelector: string) => {
+  #displayStateHungry = (elementSelector: string) => {
     const displayElement = document.querySelector(
       elementSelector,
     ) as HTMLDivElement;
@@ -139,7 +139,7 @@ export default class Tamagotchi extends Abilities {
     stateBar.innerText = "Hungry";
   };
 
-  displayStateSleepy = (elementSelector: string) => {
+  #displayStateSleepy = (elementSelector: string) => {
     const displayElement = document.querySelector(
       elementSelector,
     ) as HTMLDivElement;
@@ -160,19 +160,19 @@ export default class Tamagotchi extends Abilities {
     if (this.nextState != this.lastState) {
       switch (this.nextState) {
         case "Bored":
-          this.displayStateBored(elementSelector);
+          this.#displayStateBored(elementSelector);
           break;
 
         case "Hungry":
-          this.displayStateHungry(elementSelector);
+          this.#displayStateHungry(elementSelector);
           break;
 
         case "Happy":
-          this.displayStateHappy(elementSelector);
+          this.#displayStateHappy(elementSelector);
           break;
 
         case "Sleepy":
-          this.displayStateSleepy(elementSelector);
+          this.#displayStateSleepy(elementSelector);
           break;
 
         default:
@@ -212,10 +212,10 @@ export default class Tamagotchi extends Abilities {
     funElement,
     stateElement,
   }: ITamagotchiStatus) => {
-    this.displayHealth(healthElement);
-    this.displayEnergy(energyElement);
-    this.displayHunger(hungerElement);
-    this.displayFun(funElement);
+    this.#displayHealth(healthElement);
+    this.#displayEnergy(energyElement);
+    this.#displayHunger(hungerElement);
+    this.#displayFun(funElement);
     this.displayState(stateElement);
   };
 
@@ -230,7 +230,7 @@ export default class Tamagotchi extends Abilities {
         this.energy.value--;
       }
     }
-    this.displayStateBored(".gameDisplay");
+
     this.hunger.value--;
     this.fun.value--;
   };
