@@ -36,6 +36,10 @@ export default class Game {
     if (!(this.counter % 5)) {
       this.tamagotchi.decraseLifeParams();
       this.tamagotchi.incraseLifeParams();
+
+      if (this.counter >= 10000) {
+        this.counter = 0;
+      }
       this.tamagotchi.counter++;
     }
     this.tamagotchi.checkState();

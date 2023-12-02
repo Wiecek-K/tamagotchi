@@ -183,7 +183,7 @@ export default class Tamagotchi extends Abilities {
 
   displayState = (elementSelector: string) => {
     if (this.nextState != this.lastState) {
-//clear animation interval
+      //clear animation interval
       switch (this.nextState) {
         case "bored":
           this.#displayStateBored(elementSelector);
@@ -271,6 +271,9 @@ export default class Tamagotchi extends Abilities {
   incraseLifeParams = () => {
     if (this.lastState === "eating") {
       this.hunger.value += 2;
+      if (this.hunger.value > 10) {
+        this.hunger.value = 10;
+      }
     }
   };
 }
