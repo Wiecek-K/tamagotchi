@@ -233,10 +233,6 @@ export default class Tamagotchi extends Abilities {
         this.nextState = "bored";
         return;
       }
-    } else {
-      if (this.nextState === "eating") {
-        this.hunger.value += 2;
-      }
     }
   };
 
@@ -271,5 +267,9 @@ export default class Tamagotchi extends Abilities {
     this.fun.value--;
   };
 
-  // incraseLifeParams=()=>{}
+  incraseLifeParams = () => {
+    if (this.lastState === "eating") {
+      this.hunger.value += 2;
+    }
+  };
 }

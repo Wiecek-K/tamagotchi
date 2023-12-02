@@ -3,6 +3,7 @@ import { ITamagotchiStatus, TTamagoState } from "./tamagotchi";
 
 export default class Game {
   tamagotchi: Tamagotchi;
+  counter = 0;
 
   constructor() {
     this.tamagotchi = new Tamagotchi();
@@ -32,7 +33,11 @@ export default class Game {
     funElement,
     stateElement,
   }: ITamagotchiStatus) => {
-    this.tamagotchi.decraseLifeParams();
+    if (!(this.counter % 5)) {
+      this.tamagotchi.decraseLifeParams();
+      this.tamagotchi.incraseLifeParams();
+      this.tamagotchi.counter++;
+    }
     this.tamagotchi.checkState();
     console.log(this.tamagotchi.isInAction);
 
@@ -57,5 +62,4 @@ export default class Game {
       this.tamagotchi.isInAction = false;
     }
   };
-  // setTamagoState=()=>{}
 }

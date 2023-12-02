@@ -26,8 +26,8 @@ document.addEventListener("DOMContentLoaded", () => {
       hungerElement: "#hungerPoint",
       stateElement: "#gameDisplay",
     });
-    game.tamagotchi.counter++;
-  }, 1000);
+    game.counter++;
+  }, 200);
 
   actionButtons.addEventListener("click", (e: MouseEvent) => {
     const clickedElement = e.target as HTMLDivElement;
