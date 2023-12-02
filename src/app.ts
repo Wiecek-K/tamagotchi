@@ -18,6 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
       funElement: "#funPoint",
       hungerElement: "#hungerPoint",
     });
+    game.tamagotchi.counter++
   }, 1000);
 
   //add event listener click action btns

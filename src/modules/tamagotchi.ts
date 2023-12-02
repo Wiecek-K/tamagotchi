@@ -10,7 +10,7 @@ export default class Tamagotchi extends Abilities {
   hunger: { value: number; importance: number };
   energy: { value: number; importance: number };
   fun: { value: number; importance: number };
-  flag = false;
+  counter = 0;
 
   constructor() {
     super();
@@ -98,13 +98,12 @@ export default class Tamagotchi extends Abilities {
       this.health.value--;
     }
 
-    if (this.flag) {
+    if (this.counter % 2) {
       this.energy.value--;
       if (this.fun.value <= 0) {
         this.energy.value--;
       }
     }
-    this.flag = !this.flag;
 
     this.hunger.value--;
     this.fun.value--;
