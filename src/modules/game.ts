@@ -34,8 +34,8 @@ export default class Game {
     stateElement,
   }: ITamagotchiStatus) => {
     if (!(this.counter % 5)) {
-      this.tamagotchi.decraseLifeParams();
       this.tamagotchi.incraseLifeParams();
+      this.tamagotchi.decraseLifeParams();
 
       if (this.counter >= 10000) {
         this.counter = 0;

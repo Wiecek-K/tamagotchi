@@ -177,8 +177,25 @@ export default class Tamagotchi extends Abilities {
       throw new Error("element not found");
     }
 
-    tamago.innerHTML = ` <img src="assets/tamago/State=Eating 1.svg" alt="your tamago eating" width="152" height="130" />`;
+    tamago.innerHTML = `<img src="assets/tamago/State=Eating 1.svg" alt="your tamago eating" width="152" height="130" />`;
     stateBar.innerText = "EATING";
+  };
+
+  #displayStateSleeping = (elementSelector: string) => {
+    const displayElement = document.querySelector(
+      elementSelector,
+    ) as HTMLDivElement;
+
+    const tamago = displayElement.querySelector("#tamago") as HTMLDivElement;
+    const stateBar = displayElement.querySelector(
+      "#stateBar",
+    ) as HTMLDivElement;
+    if (!tamago || !stateBar) {
+      throw new Error("element not found");
+    }
+
+    tamago.innerHTML = `<img src="assets/tamago/State=Sleeping 1.svg" alt="your tamago eating" width="152" height="130" />`;
+    stateBar.innerText = "SLEEPING";
   };
 
   displayState = (elementSelector: string) => {
@@ -203,6 +220,13 @@ export default class Tamagotchi extends Abilities {
 
         case "eating":
           this.#displayStateEating(elementSelector);
+          break;
+
+        case "playing":
+          break;
+
+        case "sleeping":
+          this.#displayStateSleeping(elementSelector);
           break;
 
         default:
@@ -273,6 +297,13 @@ export default class Tamagotchi extends Abilities {
       this.hunger.value += 2;
       if (this.hunger.value > 10) {
         this.hunger.value = 10;
+      }
+    }
+
+    if (this.lastState === "sleeping") {
+      this.energy.value += 2;
+      if (this.energy.value > 10) {
+        this.energy.value = 10;
       }
     }
   };
