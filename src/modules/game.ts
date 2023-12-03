@@ -34,8 +34,8 @@ export default class Game {
     stateElement,
   }: ITamagotchiStatus) => {
     if (!(this.counter % 5)) {
-      this.tamagotchi.decraseLifeParams();
       this.tamagotchi.incraseLifeParams();
+      this.tamagotchi.decraseLifeParams();
 
       if (this.counter >= 10000) {
         this.counter = 0;
@@ -53,12 +53,12 @@ export default class Game {
     });
   };
 
-  setState = (nextState: TTamagoState) => {
-    if (this.tamagotchi.lastState != nextState) {
-      this.tamagotchi.isInAction = true;
-      this.tamagotchi.nextState = nextState;
+   setState = (nextState: TTamagoState) => {
+     if (this.tamagotchi.lastState != nextState) {
+       this.tamagotchi.isInAction = true;
+       this.tamagotchi.nextState = nextState;
     } else {
-      this.tamagotchi.isInAction = false;
-    }
-  };
+       this.tamagotchi.isInAction = false;
+     }
+   };
 }
