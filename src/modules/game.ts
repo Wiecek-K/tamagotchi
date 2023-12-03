@@ -53,12 +53,12 @@ export default class Game {
     });
   };
 
-   setState = (nextState: TTamagoState) => {
-     if (this.tamagotchi.lastState != nextState) {
-       this.tamagotchi.isInAction = true;
-       this.tamagotchi.nextState = nextState;
+  setState = (nextState: TTamagoState) => {
+    if (this.tamagotchi.lastState != nextState) {
+      this.tamagotchi.isInAction = true;
+      this.tamagotchi.nextState = nextState;
     } else {
-       this.tamagotchi.isInAction = false;
-     }
-   };
+      this.tamagotchi.isInAction = false;
+    }
+  };
 }

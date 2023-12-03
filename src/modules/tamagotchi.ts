@@ -194,8 +194,25 @@ export default class Tamagotchi extends Abilities {
       throw new Error("element not found");
     }
 
-    tamago.innerHTML = `<img src="assets/tamago/State=Sleeping 1.svg" alt="your tamago eating" width="152" height="130" />`;
+    tamago.innerHTML = `<img src="assets/tamago/State=Sleeping 1.svg" alt="your tamago sleeping" width="152" height="130" />`;
     stateBar.innerText = "SLEEPING";
+  };
+
+  #displayStatePlaying = (elementSelector: string) => {
+    const displayElement = document.querySelector(
+      elementSelector,
+    ) as HTMLDivElement;
+
+    const tamago = displayElement.querySelector("#tamago") as HTMLDivElement;
+    const stateBar = displayElement.querySelector(
+      "#stateBar",
+    ) as HTMLDivElement;
+    if (!tamago || !stateBar) {
+      throw new Error("element not found");
+    }
+
+    tamago.innerHTML = `<img src="assets/tamago/State=Playing 1.svg" alt="your tamago playing" width="152" height="130" />`;
+    stateBar.innerText = "PLAYING";
   };
 
   displayState = (elementSelector: string) => {
@@ -223,6 +240,7 @@ export default class Tamagotchi extends Abilities {
           break;
 
         case "playing":
+          this.#displayStatePlaying(elementSelector);
           break;
 
         case "sleeping":
@@ -290,21 +308,30 @@ export default class Tamagotchi extends Abilities {
 
     this.hunger.value--;
     this.fun.value--;
+
+    if (this.energy.value > 10) {
+      this.energy.value = 10;
+    }
+    if (this.hunger.value > 10) {
+      this.hunger.value = 10;
+    }
+    if (this.fun.value > 10) {
+      this.fun.value = 10;
+    }
   };
 
   incraseLifeParams = () => {
     if (this.lastState === "eating") {
       this.hunger.value += 2;
-      if (this.hunger.value > 10) {
-        this.hunger.value = 10;
-      }
     }
 
     if (this.lastState === "sleeping") {
       this.energy.value += 2;
-      if (this.energy.value > 10) {
-        this.energy.value = 10;
-      }
+    }
+
+    if (this.lastState === "playing") {
+      this.fun.value += 2;
+      this.energy.value--;
     }
   };
 }
