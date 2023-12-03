@@ -1,5 +1,5 @@
 import { Abilities } from "./abilities";
-export interface ITamagotchiStatus {
+export interface ITamagotchiDisplay {
   healthElement: string;
   hungerElement: string;
   energyElement: string;
@@ -26,14 +26,14 @@ export default class Tamagotchi extends Abilities {
   counter = 0;
   isInAction = false;
   lastState: TTamagoState = "";
-  nextState: TTamagoState = "";
+  nextState: TTamagoState = "happy";
 
   constructor() {
     super();
-    this.health = { value: 1, importance: 1 };
-    this.energy = { value: 1, importance: 2 };
-    this.hunger = { value: 1, importance: 3 };
-    this.fun = { value: 1, importance: 4 };
+    this.health = { value: 10, importance: 1 };
+    this.energy = { value: 10, importance: 2 };
+    this.hunger = { value: 10, importance: 3 };
+    this.fun = { value: 10, importance: 4 };
     console.log("Tamagotchi initialized");
   }
 
@@ -229,7 +229,7 @@ export default class Tamagotchi extends Abilities {
       throw new Error("element not found");
     }
 
-    tamago.innerHTML = `<img src="assets/tamago/State=Dead.svg" alt="your tamago is Dead" width="152" height="130" />`;
+    tamago.innerHTML = `<img src="assets/tamago/State=Dead.svg" alt="your tamago is Dead" width="182" height="72" />`;
     stateBar.innerText = "DEAD";
   };
 
@@ -316,7 +316,7 @@ export default class Tamagotchi extends Abilities {
     energyElement,
     funElement,
     stateElement,
-  }: ITamagotchiStatus) => {
+  }: ITamagotchiDisplay) => {
     this.#displayHealth(healthElement);
     this.#displayEnergy(energyElement);
     this.#displayHunger(hungerElement);

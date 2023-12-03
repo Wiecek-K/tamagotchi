@@ -13,14 +13,14 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "VT323", monospace;
+  color: var(--plum);
 }
 
 body {
   background: #1c1c1c;
   overflow: hidden;
   height: 100vh;
-  font-family: "VT323", monospace;
-  color: var(--plum);
 }
 
 .gameBoy {
@@ -65,10 +65,11 @@ body {
 
 .tamagoPlace {
   width: 100%;
+  min-height: 292px;
   border: solid 7px var(--blue);
   margin-bottom: 15px;
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   padding: 70px 20% 58px 20%;
   flex-direction: column;
   align-items: center;
@@ -100,12 +101,25 @@ body {
   justify-content: space-between;
 }
 
-.actionButtons button {
+.actionButtons .actionButton {
   width: 75px;
   height: 75px;
   border-radius: 100%;
   background-color: var(--yellow);
   border: solid var(--timber) 5px;
+  box-shadow: 0 7px var(--plum);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.actionButtons .restartButton {
+  width: 100%;
+  height: 75px;
+  padding: 8px 16px;
+  font-size: 50px;
+  background-color: var(--yellow);
+  border: solid var(--timber) 6px;
   box-shadow: 0 7px var(--plum);
   display: flex;
   justify-content: center;
