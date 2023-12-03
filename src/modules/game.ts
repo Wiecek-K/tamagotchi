@@ -51,13 +51,6 @@ export default class Game {
     document.removeEventListener("click", this.#startHandler);
   };
 
-  // #restartHandler = () => {
-  //   const actionsBar = document.querySelector(this.#actionsBar) as HTMLElement;
-  //   this.tamagotchi = new Tamagotchi();
-  //   actionsBar?.removeEventListener("click", this.#restartHandler);
-  //   this.init();
-  // };
-
   init = () => {
     this.#displayActionsBar();
 
@@ -144,7 +137,5 @@ export default class Game {
       throw new Error("element not found");
     }
     actionsBar.innerHTML = `<button class="restartButton" id="restart">RESTART</button>`;
-    // actionsBar.removeEventListener("click", this.#actionsHandler);
-    // actionsBar.addEventListener("click", this.#restartHandler);
   };
 }
