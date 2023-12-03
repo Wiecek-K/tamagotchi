@@ -47,8 +47,14 @@ export default class Game {
 
   #startHandler = () => {
     this.start();
-    console.log("peirwotny");
     document.removeEventListener("click", this.#startHandler);
+  };
+
+  #restartHandler = () => {
+    const actionsBar = document.querySelector(this.#actionsBar) as HTMLElement;
+    this.tamagotchi = new Tamagotchi();
+    actionsBar?.removeEventListener("click", this.#restartHandler);
+    this.init();
   };
 
   init = () => {
@@ -95,7 +101,7 @@ export default class Game {
           this.end();
         }
         this.counter++;
-      }, 10);
+      }, 200);
     }
   };
 
@@ -137,5 +143,7 @@ export default class Game {
       throw new Error("element not found");
     }
     actionsBar.innerHTML = `<button class="restartButton" id="restart">RESTART</button>`;
+    actionsBar.removeEventListener("click", this.#actionsHandler);
+    actionsBar.addEventListener("click", this.#restartHandler);
   };
 }
