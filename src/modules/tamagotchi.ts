@@ -334,4 +334,16 @@ export default class Tamagotchi extends Abilities {
       this.energy.value--;
     }
   };
+
+  checkMaxLifeParams = () => {
+    if (this.energy.value > 10) {
+      this.energy.value = 10;
+    }
+    if (this.hunger.value > 10) {
+      this.hunger.value = 10;
+    }
+    if (this.fun.value > 10) {
+      this.fun.value = 10;
+    }
+  };
 }

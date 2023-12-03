@@ -42,11 +42,11 @@ document.addEventListener("DOMContentLoaded", () => {
       game.setState(actionButton.id);
     }
   });
-  //add event listener click action btns
-  //change state in game
-  //game will use abilities
+
 
   //animation= one global interval
   //state put into this interval frames
   //evry action which change tamago state at first clear this interval
+
+  //przenieść update do game
 });

@@ -36,6 +36,7 @@ export default class Game {
     if (!(this.counter % 5)) {
       this.tamagotchi.incraseLifeParams();
       this.tamagotchi.decraseLifeParams();
+      this.tamagotchi.checkMaxLifeParams();
 
       if (this.counter >= 10000) {
         this.counter = 0;
@@ -52,6 +53,8 @@ export default class Game {
       stateElement,
     });
   };
+
+  end = () => {};
 
   setState = (nextState: TTamagoState) => {
     if (this.tamagotchi.lastState != nextState) {
