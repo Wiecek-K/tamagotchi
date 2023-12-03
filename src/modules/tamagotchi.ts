@@ -15,6 +15,7 @@ export type TTamagoState =
   | "eating"
   | "playing"
   | "sleeping"
+  | "dead"
   | "";
 
 export default class Tamagotchi extends Abilities {
@@ -29,10 +30,10 @@ export default class Tamagotchi extends Abilities {
 
   constructor() {
     super();
-    this.health = { value: 10, importance: 1 };
-    this.energy = { value: 10, importance: 2 };
-    this.hunger = { value: 10, importance: 3 };
-    this.fun = { value: 10, importance: 4 };
+    this.health = { value: 1, importance: 1 };
+    this.energy = { value: 1, importance: 2 };
+    this.hunger = { value: 1, importance: 3 };
+    this.fun = { value: 1, importance: 4 };
     console.log("Tamagotchi initialized");
   }
 
@@ -215,9 +216,29 @@ export default class Tamagotchi extends Abilities {
     stateBar.innerText = "PLAYING";
   };
 
+  #displayStateDead = (elementSelector: string) => {
+    const displayElement = document.querySelector(
+      elementSelector,
+    ) as HTMLDivElement;
+
+    const tamago = displayElement.querySelector("#tamago") as HTMLDivElement;
+    const stateBar = displayElement.querySelector(
+      "#stateBar",
+    ) as HTMLDivElement;
+    if (!tamago || !stateBar) {
+      throw new Error("element not found");
+    }
+
+    tamago.innerHTML = `<img src="assets/tamago/State=Dead.svg" alt="your tamago is Dead" width="152" height="130" />`;
+    stateBar.innerText = "DEAD";
+  };
+
   displayState = (elementSelector: string) => {
     if (this.nextState != this.lastState) {
+      //
       //clear animation interval
+      //
+
       switch (this.nextState) {
         case "bored":
           this.#displayStateBored(elementSelector);
@@ -247,6 +268,10 @@ export default class Tamagotchi extends Abilities {
           this.#displayStateSleeping(elementSelector);
           break;
 
+        case "dead":
+          this.#displayStateDead(elementSelector);
+          break;
+
         default:
           break;
       }
@@ -254,6 +279,12 @@ export default class Tamagotchi extends Abilities {
   };
 
   checkState = () => {
+    if (this.health.value <= 0) {
+      this.nextState = "dead";
+      this.isInAction = true;
+      return;
+    }
+
     if (!this.isInAction) {
       if (
         this.health.value >= 7 &&

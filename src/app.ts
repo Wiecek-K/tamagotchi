@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Start game
-  game.start({
+  game.init({
     healthElement: "#healthPoint",
     energyElement: "#energyPoint",
     funElement: "#funPoint",
@@ -18,15 +18,8 @@ document.addEventListener("DOMContentLoaded", () => {
     stateElement: "#gameDisplay",
   });
 
-  setInterval(() => {
-    game.update({
-      healthElement: "#healthPoint",
-      energyElement: "#energyPoint",
-      funElement: "#funPoint",
-      hungerElement: "#hungerPoint",
-      stateElement: "#gameDisplay",
-    });
-    game.counter++;
+  setTimeout(() => {
+    game.end;
   }, 200);
 
   actionButtons.addEventListener("click", (e: MouseEvent) => {
@@ -42,7 +35,6 @@ document.addEventListener("DOMContentLoaded", () => {
       game.setState(actionButton.id);
     }
   });
-
 
   //animation= one global interval
   //state put into this interval frames
