@@ -1,5 +1,5 @@
 import { Abilities } from "./abilities";
-export interface ITamagotchiStatus {
+export interface ITamagotchiDisplay {
   healthElement: string;
   hungerElement: string;
   energyElement: string;
@@ -15,6 +15,7 @@ export type TTamagoState =
   | "eating"
   | "playing"
   | "sleeping"
+  | "dead"
   | "";
 
 export default class Tamagotchi extends Abilities {
@@ -25,7 +26,7 @@ export default class Tamagotchi extends Abilities {
   counter = 0;
   isInAction = false;
   lastState: TTamagoState = "";
-  nextState: TTamagoState = "";
+  nextState: TTamagoState = "happy";
 
   constructor() {
     super();
@@ -215,9 +216,29 @@ export default class Tamagotchi extends Abilities {
     stateBar.innerText = "PLAYING";
   };
 
+  #displayStateDead = (elementSelector: string) => {
+    const displayElement = document.querySelector(
+      elementSelector,
+    ) as HTMLDivElement;
+
+    const tamago = displayElement.querySelector("#tamago") as HTMLDivElement;
+    const stateBar = displayElement.querySelector(
+      "#stateBar",
+    ) as HTMLDivElement;
+    if (!tamago || !stateBar) {
+      throw new Error("element not found");
+    }
+
+    tamago.innerHTML = `<img src="assets/tamago/State=Dead.svg" alt="your tamago is Dead" width="182" height="72" />`;
+    stateBar.innerText = "DEAD";
+  };
+
   displayState = (elementSelector: string) => {
     if (this.nextState != this.lastState) {
+      //
       //clear animation interval
+      //
+
       switch (this.nextState) {
         case "bored":
           this.#displayStateBored(elementSelector);
@@ -247,6 +268,10 @@ export default class Tamagotchi extends Abilities {
           this.#displayStateSleeping(elementSelector);
           break;
 
+        case "dead":
+          this.#displayStateDead(elementSelector);
+          break;
+
         default:
           break;
       }
@@ -254,6 +279,12 @@ export default class Tamagotchi extends Abilities {
   };
 
   checkState = () => {
+    if (this.health.value <= 0) {
+      this.nextState = "dead";
+      this.isInAction = true;
+      return;
+    }
+
     if (!this.isInAction) {
       if (
         this.health.value >= 7 &&
@@ -285,7 +316,7 @@ export default class Tamagotchi extends Abilities {
     energyElement,
     funElement,
     stateElement,
-  }: ITamagotchiStatus) => {
+  }: ITamagotchiDisplay) => {
     this.#displayHealth(healthElement);
     this.#displayEnergy(energyElement);
     this.#displayHunger(hungerElement);
@@ -332,6 +363,18 @@ export default class Tamagotchi extends Abilities {
     if (this.lastState === "playing") {
       this.fun.value += 2;
       this.energy.value--;
+    }
+  };
+
+  checkMaxLifeParams = () => {
+    if (this.energy.value > 10) {
+      this.energy.value = 10;
+    }
+    if (this.hunger.value > 10) {
+      this.hunger.value = 10;
+    }
+    if (this.fun.value > 10) {
+      this.fun.value = 10;
     }
   };
 }
