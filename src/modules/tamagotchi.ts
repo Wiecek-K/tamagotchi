@@ -1,4 +1,5 @@
 import { Abilities } from "./abilities";
+import { Animation } from "./animation";
 export interface ITamagotchiDisplay {
   healthElement: string;
   hungerElement: string;
@@ -27,6 +28,7 @@ export default class Tamagotchi extends Abilities {
   isInAction = false;
   lastState: TTamagoState = "";
   nextState: TTamagoState = "happy";
+  animation: null | Animation = null;
 
   constructor() {
     super();
@@ -177,8 +179,16 @@ export default class Tamagotchi extends Abilities {
     if (!tamago || !stateBar) {
       throw new Error("element not found");
     }
-
-    tamago.innerHTML = `<img src="assets/tamago/State=Eating 1.svg" alt="your tamago eating" width="152" height="130" />`;
+    this.animation = new Animation(
+      [
+        `src="assets/tamago/State=Eating 1.svg"`,
+        `src="assets/tamago/State=Eating 2.svg"`,
+      ],
+      300,
+      "#tamago",
+      `alt="your tamago eating" width="152" height="130"`,
+    );
+    // tamago.innerHTML = `<img src="assets/tamago/State=Eating 1.svg" alt="your tamago eating" width="152" height="130" />`;
     stateBar.innerText = "EATING";
   };
 
@@ -238,6 +248,10 @@ export default class Tamagotchi extends Abilities {
       //
       //clear animation interval
       //
+      if (this.animation) {
+        this.animation.end();
+        this.animation = null;
+      }
 
       switch (this.nextState) {
         case "bored":
