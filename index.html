@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Tamagotchi</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=VT323&display=swap"
+      rel="stylesheet"
+    />
+    <link href="./styles.css" rel="stylesheet" />
+    <link href="./tamagoStates.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="gameBoy">
+      <div class="gameDisplay" id="gameDisplay">
+        <div class="statusBar">
+          <div class="stat">
+            <img
+              src="./assets/icons/Icon=Health.svg"
+              alt="health"
+              width="40"
+              height="40"
+            />
+            <p class="statPoint" id="healthPoint"></p>
+          </div>
+          <div class="stat">
+            <img
+              src="./assets/icons/Icon=Hunger.svg"
+              alt="hunger"
+              width="40"
+              height="40"
+            />
+            <p class="statPoint" id="hungerPoint"></p>
+          </div>
+          <div class="stat">
+            <img
+              src="./assets/icons/Icon=Sleep.svg"
+              alt="hunger"
+              width="40"
+              height="40"
+            />
+            <p class="statPoint" id="energyPoint"></p>
+          </div>
+          <div class="stat">
+            <img
+              src="./assets/icons/Icon=Fun.svg"
+              alt="health"
+              width="40"
+              height="40"
+            />
+            <p class="statPoint" id="funPoint"></p>
+          </div>
+        </div>
+        <div class="tamagoPlace" id="tamagoPlace">
+          <div id="tamago" class="tamago"></div>
+          <div class="tamagoFloor"></div>
+        </div>
+        <div class="stateBar" id="stateBar"></div>
+      </div>
+      <div class="actionButtons" id="actionButtons"></div>
+    </div>
+
+    <script src="dist/app.js" type="module"></script>
+  </body>
+</html>

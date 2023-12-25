@@ -1,0 +1,90 @@
+.tamago {
+  background-image: url(./assets/tamago/tamago-spritesheet.png);
+  background-repeat: no-repeat;
+  display: block;
+}
+
+.State_Bored {
+  width: 152px;
+  height: 130px;
+  background-position: 0 0;
+}
+
+.State_Eating {
+  width: 152px;
+  height: 130px;
+  animation: animateEating 0.7s steps(1) infinite;
+}
+
+@keyframes animateEating {
+  0%,
+  100% {
+    background-position: 0px -130px;
+  }
+  50% {
+    background-position: 0px -260px;
+  }
+}
+
+.State_Hungry {
+  width: 152px;
+  height: 130px;
+  background-position: 0 -390px;
+}
+
+.State_Sleeping {
+  width: 152px;
+  height: 130px;
+  animation: animateSleeping 0.7s steps(1) infinite;
+}
+@keyframes animateSleeping {
+  0%,
+  100% {
+    background-position: 0 -520px;
+  }
+  50% {
+    background-position: 0 -651px;
+  }
+}
+
+.State_Sleepy {
+  width: 154px;
+  height: 130px;
+  background-position: 0 -781px;
+}
+
+.State_Happy {
+  width: 152px;
+  height: 130px;
+  animation: animateHappy 1s steps(1) infinite;
+}
+@keyframes animateHappy {
+  0%,
+  100% {
+    background-position: 0 -911px;
+  }
+  50% {
+    background-position: 0 -1041px;
+  }
+}
+
+.State_Playing {
+  width: 200px;
+  height: 144px;
+  animation: animatePlaying 0.7s steps(1) infinite;
+}
+@keyframes animatePlaying {
+  0%,
+  100% {
+    background-position: 0 -1171px;
+  }
+  50% {
+    background-position: 0 -1315px;
+  }
+}
+
+.State_Dead {
+  width: 182px;
+  height: 72px;
+  background-position: 0 -1459px;
+}
