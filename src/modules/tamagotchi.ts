@@ -289,6 +289,15 @@ export default class Tamagotchi extends Abilities {
     }
   };
 
+  setAction = (nextState: TTamagoState) => {
+    if (this.lastState != nextState) {
+      this.isInAction = true;
+      this.nextState = nextState;
+    } else {
+      this.isInAction = false;
+    }
+  };
+
   checkState = () => {
     if (this.health.value <= 0) {
       this.nextState = "dead";
