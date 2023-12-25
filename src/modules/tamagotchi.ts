@@ -110,7 +110,7 @@ export default class Tamagotchi extends Abilities {
       throw new Error("element not found");
     }
 
-    tamago.innerHTML = ` <img src="assets/tamago/State=Standing.svg" alt="your tamago is Happy" width="152" height="130" />`;
+    tamago.classList.add("State_Happy");
     stateBar.innerText = "HAPPY";
   };
 
@@ -127,7 +127,7 @@ export default class Tamagotchi extends Abilities {
       throw new Error("element not found");
     }
 
-    tamago.innerHTML = ` <img src="assets/tamago/State=Bored.svg" alt="your tamago is Bored" width="152" height="130" />`;
+    tamago.classList.add("State_Bored");
     stateBar.innerText = "BORED";
   };
 
@@ -144,7 +144,7 @@ export default class Tamagotchi extends Abilities {
       throw new Error("element not found");
     }
 
-    tamago.innerHTML = ` <img src="assets/tamago/State=Hungry.svg" alt="your tamago is Hungry" width="152" height="130" />`;
+    tamago.classList.add("State_Hungry");
     stateBar.innerText = "HUNGRY";
   };
 
@@ -161,7 +161,7 @@ export default class Tamagotchi extends Abilities {
       throw new Error("element not found");
     }
 
-    tamago.innerHTML = ` <img src="assets/tamago/State=Sleepy.svg" alt="your tamago is Sleepy" width="152" height="130" />`;
+    tamago.classList.add("State_Sleepy");
     stateBar.innerText = "SLEPPY";
   };
 
@@ -178,7 +178,7 @@ export default class Tamagotchi extends Abilities {
       throw new Error("element not found");
     }
 
-    tamago.innerHTML = `<img src="assets/tamago/State=Eating 1.svg" alt="your tamago eating" width="152" height="130" />`;
+    tamago.classList.add("State_Eating");
     stateBar.innerText = "EATING";
   };
 
@@ -195,7 +195,7 @@ export default class Tamagotchi extends Abilities {
       throw new Error("element not found");
     }
 
-    tamago.innerHTML = `<img src="assets/tamago/State=Sleeping 1.svg" alt="your tamago sleeping" width="152" height="130" />`;
+    tamago.classList.add("State_Sleeping");
     stateBar.innerText = "SLEEPING";
   };
 
@@ -212,7 +212,7 @@ export default class Tamagotchi extends Abilities {
       throw new Error("element not found");
     }
 
-    tamago.innerHTML = `<img src="assets/tamago/State=Playing 1.svg" alt="your tamago playing" width="152" height="130" />`;
+    tamago.classList.add("State_Playing");
     stateBar.innerText = "PLAYING";
   };
 
@@ -229,15 +229,26 @@ export default class Tamagotchi extends Abilities {
       throw new Error("element not found");
     }
 
-    tamago.innerHTML = `<img src="assets/tamago/State=Dead.svg" alt="your tamago is Dead" width="182" height="72" />`;
+    tamago.classList.add("State_Dead");
     stateBar.innerText = "DEAD";
+  };
+
+  #removeDisplayingStates = (elementSelector: string) => {
+    const displayElement = document.querySelector(
+      elementSelector,
+    ) as HTMLDivElement;
+
+    const tamago = displayElement.querySelector("#tamago") as HTMLDivElement;
+    tamago.classList.forEach((className) => {
+      if (className.startsWith("State")) {
+        tamago.classList.remove(className);
+      }
+    });
   };
 
   displayState = (elementSelector: string) => {
     if (this.nextState != this.lastState) {
-      //
-      //clear animation interval
-      //
+      this.#removeDisplayingStates(elementSelector);
 
       switch (this.nextState) {
         case "bored":
