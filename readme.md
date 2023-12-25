@@ -4,12 +4,12 @@
 
 This project is about recreating famous game.
 
----
+## You can play on the site: [Tamagochi Game](https://wiecek-k.github.io/tamagotchi/)
 
 ### 📝 Project requirements
 
 - should handle 8 states `(happy, sleepy, sleeping,
-  hungry, eating, playing, sleepy, dead)`
+hungry, eating, playing, sleepy, dead)`
 - should maintain 4 parameters `(health, hunger, energy, fun)`
 - should support 3 actions `(feeding, sleeping, playing)`
 - should support dying
