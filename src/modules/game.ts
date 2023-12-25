@@ -1,5 +1,5 @@
 import Tamagotchi from "./tamagotchi";
-import { ITamagotchiDisplay, TTamagoState } from "./tamagotchi";
+import { ITamagotchiDisplay } from "./tamagotchi";
 interface ITamagotchiGameDisplay extends ITamagotchiDisplay {
   actionsBar: string;
 }
@@ -41,7 +41,7 @@ export default class Game {
       actionButton?.id === "playing" ||
       actionButton?.id === "sleeping"
     ) {
-      this.setState(actionButton.id);
+      this.tamagotchi.setAction(actionButton.id);
     }
   };
 
@@ -116,15 +116,6 @@ export default class Game {
     console.log("Twój tamago umarł");
     console.log("NA ŚMIERĆ");
     console.log(`Twój wynik to ${this.tamagotchi.counter}`);
-  };
-
-  setState = (nextState: TTamagoState) => {
-    if (this.tamagotchi.lastState != nextState) {
-      this.tamagotchi.isInAction = true;
-      this.tamagotchi.nextState = nextState;
-    } else {
-      this.tamagotchi.isInAction = false;
-    }
   };
 
   #displayActionsBar = () => {
