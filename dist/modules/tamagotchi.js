@@ -1,7 +1,5 @@
-import {Abilities} from "./abilities.js";
-export default class Tamagotchi extends Abilities {
+export default class Tamagotchi {
   constructor() {
-    super();
     this.counter = 0;
     this.isInAction = false;
     this.lastState = "";
@@ -209,25 +207,14 @@ export default class Tamagotchi extends Abilities {
     };
     this.decraseLifeParams = () => {
       if (this.hunger.value <= 0 || this.energy.value <= 0) {
-        this.health.value--;
+        this.health.value > 0 ? this.health.value-- : this.health.value = 0;
       }
       if (this.counter % 2) {
+        this.fun.value <= 0 ? this.energy.value-- : null;
         this.energy.value--;
-        if (this.fun.value <= 0) {
-          this.energy.value--;
-        }
       }
       this.hunger.value--;
       this.fun.value--;
-      if (this.energy.value > 10) {
-        this.energy.value = 10;
-      }
-      if (this.hunger.value > 10) {
-        this.hunger.value = 10;
-      }
-      if (this.fun.value > 10) {
-        this.fun.value = 10;
-      }
     };
     this.incraseLifeParams = () => {
       if (this.lastState === "eating") {
@@ -250,6 +237,17 @@ export default class Tamagotchi extends Abilities {
       }
       if (this.fun.value > 10) {
         this.fun.value = 10;
+      }
+    };
+    this.checkMinLifeParams = () => {
+      if (this.energy.value < 0) {
+        this.energy.value = 0;
+      }
+      if (this.hunger.value < 0) {
+        this.hunger.value = 0;
+      }
+      if (this.fun.value < 0) {
+        this.fun.value = 0;
       }
     };
     this.health = {value: 10, importance: 1};
