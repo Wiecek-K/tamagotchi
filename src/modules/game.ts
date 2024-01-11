@@ -80,6 +80,7 @@ export default class Game {
           this.tamagotchi.incraseLifeParams();
           this.tamagotchi.decraseLifeParams();
           this.tamagotchi.checkMaxLifeParams();
+          this.tamagotchi.checkMinLifeParams();
 
           if (this.counter >= 10000) {
             this.counter = 0;

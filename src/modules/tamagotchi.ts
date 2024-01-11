@@ -1,4 +1,3 @@
-import { Abilities } from "./abilities";
 export interface ITamagotchiDisplay {
   healthElement: string;
   hungerElement: string;
@@ -18,7 +17,7 @@ export type TTamagoState =
   | "dead"
   | "";
 
-export default class Tamagotchi extends Abilities {
+export default class Tamagotchi {
   health: { value: number; importance: number };
   hunger: { value: number; importance: number };
   energy: { value: number; importance: number };
@@ -29,7 +28,6 @@ export default class Tamagotchi extends Abilities {
   nextState: TTamagoState = "happy";
 
   constructor() {
-    super();
     this.health = { value: 10, importance: 1 };
     this.energy = { value: 10, importance: 2 };
     this.hunger = { value: 10, importance: 3 };
@@ -347,28 +345,16 @@ export default class Tamagotchi extends Abilities {
 
   decraseLifeParams = () => {
     if (this.hunger.value <= 0 || this.energy.value <= 0) {
-      this.health.value--;
+      this.health.value > 0 ? this.health.value-- : (this.health.value = 0);
     }
 
     if (this.counter % 2) {
-      this.energy.value--;
-      if (this.fun.value <= 0) {
-        this.energy.value--;
-      }
+      this.fun.value <= 0 ? this.energy.value-- : null;
+      this.energy.value-- 
     }
 
-    this.hunger.value--;
-    this.fun.value--;
-
-    if (this.energy.value > 10) {
-      this.energy.value = 10;
-    }
-    if (this.hunger.value > 10) {
-      this.hunger.value = 10;
-    }
-    if (this.fun.value > 10) {
-      this.fun.value = 10;
-    }
+     this.hunger.value-- 
+    this.fun.value-- 
   };
 
   incraseLifeParams = () => {
@@ -395,6 +381,18 @@ export default class Tamagotchi extends Abilities {
     }
     if (this.fun.value > 10) {
       this.fun.value = 10;
+    }
+  };
+
+  checkMinLifeParams = () => {
+    if (this.energy.value < 0) {
+      this.energy.value = 0;
+    }
+    if (this.hunger.value < 0) {
+      this.hunger.value = 0;
+    }
+    if (this.fun.value < 0) {
+      this.fun.value = 0;
     }
   };
 }
