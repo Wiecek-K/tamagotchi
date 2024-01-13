@@ -350,24 +350,24 @@ export default class Tamagotchi {
 
     if (this.counter % 2) {
       this.fun.value <= 0 ? this.energy.value-- : null;
-      this.energy.value-- 
+      this.energy.value--;
     }
 
-     this.hunger.value-- 
-    this.fun.value-- 
+    this.hunger.value--;
+    this.fun.value--;
   };
 
   incraseLifeParams = () => {
     if (this.lastState === "eating") {
-      this.hunger.value += 2;
+      this.hunger.value += 3;
     }
 
     if (this.lastState === "sleeping") {
-      this.energy.value += 2;
+      this.energy.value += 3;
     }
 
     if (this.lastState === "playing") {
-      this.fun.value += 2;
+      this.fun.value += 3;
       this.energy.value--;
     }
   };
